@@ -19,5 +19,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'dhipereira21@gmail.com.br',
             'password' => bcrypt('password'),
         ]);
+
+        \App\Domain\Scheduling\Models\Scheduling::factory(10)->create();
     }
 }
