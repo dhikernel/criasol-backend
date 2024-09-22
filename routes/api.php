@@ -1,5 +1,6 @@
 <?php
 
+use App\Domain\Doctor\Controllers\DoctorController;
 use App\Domain\Scheduling\Controllers\SchedulingController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -40,9 +41,20 @@ Route::prefix('scheduling')->group(function () {
 
     Route::get('/list', [SchedulingController::class, 'index'])->middleware(['auth:sanctum', 'can:access'])->name('scheduling.index');
 
-    Route::post('/create', [SchedulingController::class, 'store'])->middleware(['auth:sanctum', 'can:access'])->name('scheduling.store');
+    Route::post('/create', [SchedulingController::class, 'store'])->middleware(['auth:sanctum', 'can:access-receptionist'])->name('scheduling.store');
 
     Route::put('/update/{id}', [SchedulingController::class, 'update'])->middleware(['auth:sanctum', 'can:access'])->name('scheduling.update');
 
-    Route::delete('/delete/{id}', [SchedulingController::class, 'destroy'])->middleware(['auth:sanctum', 'can:access'])->name('scheduling.destroy');
+    Route::delete('/delete/{id}', [SchedulingController::class, 'destroy'])->middleware(['auth:sanctum', 'can:access-receptionist'])->name('scheduling.destroy');
+});
+
+Route::prefix('doctor')->group(function () {
+
+    Route::get('/list', [DoctorController::class, 'index'])->middleware(['auth:sanctum', 'can:access-doctor'])->name('doctor.index');
+
+    Route::post('/create', [DoctorController::class, 'store'])->middleware(['auth:sanctum', 'can:access-doctor'])->name('doctor.store');
+
+    Route::put('/update/{id}', [DoctorController::class, 'update'])->middleware(['auth:sanctum', 'can:access-doctor'])->name('doctor.update');
+
+    Route::delete('/delete/{id}', [DoctorController::class, 'destroy'])->middleware(['auth:sanctum', 'can:access-doctor'])->name('doctor.destroy');
 });
