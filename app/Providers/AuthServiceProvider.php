@@ -25,7 +25,15 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Gate::define('access', function (User $user) {
+            return $user->access_level;
+        });
+
+        Gate::define('access-receptionist', function (User $user) {
             return $user->access_level == 'recepcionista';
+        });
+
+        Gate::define('access-doctor', function (User $user) {
+            return $user->access_level == 'medico';
         });
     }
 }

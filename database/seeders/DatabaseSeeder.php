@@ -21,5 +21,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Domain\Scheduling\Models\Scheduling::factory(10)->create();
+
+        \App\Domain\Doctor\Models\Doctor::factory(10)->create();
     }
 }
