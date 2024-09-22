@@ -30,6 +30,7 @@ class SchedulingRepository
             ->allowedFilters([
                 AllowedFilter::exact('date', 'date'),
                 AllowedFilter::partial('type', 'animal_type'),
+                AllowedFilter::partial('id', 'id'),
             ])
             ->defaultSort('created_at')
             ->paginate(request('per_page', config('settings.AMOUNT_PAGINATE_DEFAULT')))
