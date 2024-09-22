@@ -38,11 +38,11 @@ Route::fallback(function () {
 
 Route::prefix('scheduling')->group(function () {
 
-    Route::get('/list', [SchedulingController::class, 'index'])->middleware('auth:sanctum');
+    Route::get('/list', [SchedulingController::class, 'index'])->middleware(['auth:sanctum', 'can:access'])->name('scheduling.index');
 
-    Route::post('/create', [SchedulingController::class, 'store'])->middleware('auth:sanctum');
+    Route::post('/create', [SchedulingController::class, 'store'])->middleware(['auth:sanctum', 'can:access'])->name('scheduling.store');
 
-    Route::put('/update/{id}', [SchedulingController::class, 'update'])->middleware('auth:sanctum');
+    Route::put('/update/{id}', [SchedulingController::class, 'update'])->middleware(['auth:sanctum', 'can:access'])->name('scheduling.update');
 
-    Route::delete('/delete/{id}', [SchedulingController::class, 'destroy'])->middleware('auth:sanctum');
+    Route::delete('/delete/{id}', [SchedulingController::class, 'destroy'])->middleware(['auth:sanctum', 'can:access'])->name('scheduling.destroy');
 });

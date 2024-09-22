@@ -15,13 +15,14 @@ class RegisterController extends Controller
             'name' => 'required|string',
             'email' => 'required|string|email',
             'password' => 'required|string',
+            'access_level' => 'required|string|in:recepcionista,medico',
         ]);
 
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
 
-        $registerData = $request->only('name', 'email', 'password');
+        $registerData = $request->only('name', 'email', 'password', 'access_level');
 
         $registerData['password'] = bcrypt($registerData['password']);
 
