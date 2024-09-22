@@ -13,6 +13,7 @@ class SchedulingController extends Controller
     protected SchedulingRepository $repository;
 
     protected array $validators = [
+        'doctor_id' => 'nullable|integer',
         'name' => 'required|string|max:255',
         'email' => 'required|string|email|max:255|unique:scheduling',
         'animal_name' => 'required|string|max:255',
