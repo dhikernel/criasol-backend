@@ -22,6 +22,9 @@ class SchedulingFactory extends Factory
     public function definition(): array
     {
         return [
+            'doctor_id' => function () {
+                return \App\Domain\Doctor\Models\Doctor::factory()->create()->id;
+            },
             'name' => $this->faker->name,
             'email' => $this->faker->safeEmail,
             'animal_name' => $this->faker->firstName,

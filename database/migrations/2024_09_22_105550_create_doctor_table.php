@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('doctor', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unsigned();
             $table->string('name')->nullable();
             $table->string('specialty')->nullable();
             $table->string('phone')->nullable();

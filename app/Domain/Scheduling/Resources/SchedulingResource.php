@@ -2,6 +2,7 @@
 
 namespace App\Domain\Scheduling\Resources;
 
+use App\Domain\Doctor\Resources\DoctorResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -29,6 +30,7 @@ class SchedulingResource extends JsonResource
             'symptoms' => $this->symptoms,
             'date' => $this->date,
             'period' => $this->period,
+            'doctor' => DoctorResource::collection($this->whenLoaded('doctor')),
         ];
     }
 }

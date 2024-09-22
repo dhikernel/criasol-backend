@@ -6,17 +6,27 @@ namespace App\Domain\Scheduling\Repositories;
 
 use App\Domain\Scheduling\Models\Scheduling;
 use App\Domain\Scheduling\Resources\SchedulingCollection;
+use App\Domain\Scheduling\Support\DoctorRelationships;
 use Illuminate\Support\Facades\DB;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
+/**
+ * @property DoctorRelationships $doctorRelationships
+ */
+
 class SchedulingRepository
 {
+    public function __construct(DoctorRelationships $doctorRelationships)
+    {
+        $this->doctorRelationships = $doctorRelationships;
+    }
+
     public function index()
     {
-        $query = Scheduling::class;
+        $query = Scheduling::with((new DoctorRelationships())->get());
 
-        $query = QueryBuilder::for($query)
+        $result = QueryBuilder::for($query)
             ->allowedFilters([
                 AllowedFilter::exact('date', 'date'),
                 AllowedFilter::partial('type', 'animal_type'),
@@ -25,9 +35,9 @@ class SchedulingRepository
             ->paginate(request('per_page', config('settings.AMOUNT_PAGINATE_DEFAULT')))
             ->appends(request()->query());
 
-        $returnSchedulingCollection = new SchedulingCollection($query);
+        $returnconteudoTreinamentoCollection = new SchedulingCollection($result);
 
-        return $returnSchedulingCollection->resource;
+        return $returnconteudoTreinamentoCollection->resource;
     }
 
     /**
