@@ -33,8 +33,7 @@ class SchedulingRepository
                 AllowedFilter::partial('id', 'id'),
             ])
             ->defaultSort('created_at')
-            ->paginate(request('per_page', config('settings.AMOUNT_PAGINATE_DEFAULT')))
-            ->appends(request()->query());
+            ->get();
 
         $returnconteudoTreinamentoCollection = new SchedulingCollection($result);
 
