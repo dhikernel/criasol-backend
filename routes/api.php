@@ -50,11 +50,11 @@ Route::prefix('scheduling')->group(function () {
 
 Route::prefix('doctor')->group(function () {
 
-    Route::get('/list', [DoctorController::class, 'index'])->middleware(['auth:sanctum', 'can:access-doctor'])->name('doctor.index');
+    Route::get('/list', [DoctorController::class, 'index'])->middleware(['auth:sanctum', 'can:access'])->name('doctor.index');
 
-    Route::post('/create', [DoctorController::class, 'store'])->middleware(['auth:sanctum', 'can:access-doctor'])->name('doctor.store');
+    Route::post('/create', [DoctorController::class, 'store'])->middleware(['auth:sanctum', 'can:access'])->name('doctor.store');
 
-    Route::put('/update/{id}', [DoctorController::class, 'update'])->middleware(['auth:sanctum', 'can:access-doctor'])->name('doctor.update');
+    Route::put('/update/{id}', [DoctorController::class, 'update'])->middleware(['auth:sanctum', 'can:access'])->name('doctor.update');
 
-    Route::delete('/delete/{id}', [DoctorController::class, 'destroy'])->middleware(['auth:sanctum', 'can:access-doctor'])->name('doctor.destroy');
+    Route::delete('/delete/{id}', [DoctorController::class, 'destroy'])->middleware(['auth:sanctum', 'can:access'])->name('doctor.destroy');
 });
