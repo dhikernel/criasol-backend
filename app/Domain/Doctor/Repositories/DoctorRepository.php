@@ -22,8 +22,7 @@ class DoctorRepository
                 AllowedFilter::partial('specialty_name', 'specialty'),
             ])
             ->defaultSort('created_at')
-            ->paginate(request('per_page', config('settings.AMOUNT_PAGINATE_DEFAULT')))
-            ->appends(request()->query());
+            ->get();
 
         $returnDoctorCollection = new DoctorCollection($query);
 
