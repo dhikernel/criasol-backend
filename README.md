@@ -27,27 +27,27 @@ Laravel has the most extensive and thorough [documentation](https://laravel.com/
 
 You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
 ## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
 ### Premium Partners
 
 - **[Vehikl](https://vehikl.com/)**
 - **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
 - **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
 - **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+- **[Cubet Techno Labs](https://cubettech.com)**
 - **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
+- **[Many](https://www.many.co.uk)**
+- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
+- **[DevSquad](https://devsquad.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
 - **[OP.GG](https://op.gg)**
+- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
+- **[Lendio](https://lendio.com)**
 
 ## Contributing
 
@@ -64,4 +64,115 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# criasol-backend
+
+
+# CRUD CRIASOL BACKEND IN LARAVEL 10
+
+## Installation
+
+1.  Clone o projeto na sua máquina
+
+```shell
+git clone git@github.com:dhikernel/criasol-frontend.git
+```
+2. Se você for usar o Docker, instale o Docker, crie um host virtual, configure seu arquivo hosts, você pode fazer essas configurações se for usar o Apache também.
+
+2.1 Se você for usar o docker, vá para a etapa => 12
+
+3.  Install composer
+
+composer install. Se você ainda não tem o composer instalado, basta acessar o site:
+```shell
+https://getcomposer.org
+```
+
+4.  Configure seu arquivo .env execute o comando para criar uma cópia do seu .env.example para .env
+```shell
+cp .env.example .env
+```
+// Configure as variáveis ​​de ambiente de acordo com seu banco de dados.
+
+4.1 Gerar chave de criptografia laravel
+```shell
+php artisan key:generate
+```
+
+5. Migre as tabelas para seu banco de dados usando o comando
+
+```shell
+php artisan migrate --seed
+```
+
+6. executar servidor laravel embarcado ou configure um virtual host de sua preferencia
+
+```shell
+php artisan serve
+```
+7. Para executar os testes use o comando
+
+```shell
+php artisan test
+```
+
+Ou para filtrar uma classe
+
+```shell
+php artisan test --filter SchedulingControllerTest
+```
+Ou para filtrar um método
+
+```shell
+php artisan test --filter SchedulingControllerTest::testStore
+```
+
+8. para enviar a requisição é necessário gerar um token pela rota login passando email e senha
+
+## api/auth/login
+```
+9. Sobre a implementação do docker adicionada ao projeto
+
+9.1 execute o comando no diretório raiz do projeto:
+
+```shell
+docker compose build --no-cache
+```
+para construir imagens PHP, Nginx e Mysql
+
+9.2 Após terminar de construir as imagens, execute o comando:
+
+```shell
+docker compose up -d
+```
+para carregar contêineres de projeto
+
+9.3 Após levantar a infraestrutura, execute:
+
+```shell
+docker compose exec app bash
+```
+para entrar no contêiner do aplicativo
+
+9.4 Dentro do contêiner execute o comando:
+
+```shell
+composer install
+```
+9.5 para acessar o banco de dados MySQL execute o comando:
+
+```shell
+docker compose exec db bash
+```
+
+dentro do container você poderá acessar o banco de dados mysql exemplo:
+```shell
+mysql -h localhost -u root -p
+```
+password: root
+
+Você também pode configurar um cliente.
+
+13 para executar o projeto vá para
+
+```shell
+http://localhost:8989
+```
